@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PageRetUrl.aspx.cs" Inherits="DTcms.Web.api.chinapay.PageRetUrl" %>

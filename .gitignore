@@ -1,0 +1,17 @@
+DTcms.API/bin/
+DTcms.API/obj/
+DTcms.BLL/bin/
+DTcms.BLL/obj/
+DTcms.Common/bin/
+DTcms.Common/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+DTcms.Common/obj/
+DTcms.DAL/bin/
+DTcms.DAL/obj/
+DTcms.DBUtility/bin/
+DTcms.DBUtility/obj/
+DTcms.Model/bin/
+DTcms.Model/obj/
+DTcms.Web.UI/bin/
+DTcms.Web.UI/obj/
+DTcms.Web/bin/
+DTcms.Web/obj/

@@ -1,0 +1,100 @@
+﻿
+.upload-box .upload-btn {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e1e1e1;
+    color: #333;
+    display: inline-block;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.upload-box .upload-progress {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #d7d7d7;
+    height: 26px;
+    left: 0;
+    overflow: hidden;
+    padding: 2px 5px;
+    /*position: absolute;*/
+    top: 0;
+    width: 115px;
+}
+
+    .upload-box .upload-progress .txt {
+        display: block;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: normal;
+        height: 18px;
+        line-height: 18px;
+        overflow: hidden;
+        padding-right: 10px;
+        text-overflow: ellipsis;
+    }
+
+    .upload-box .upload-progress .bar {
+        border: 1px solid #1da76b;
+        display: block;
+        height: 4px;
+        position: relative;
+        width: 112px;
+    }
+
+        .upload-box .upload-progress .bar b {
+            background: #28b779 none repeat scroll 0 0;
+            display: block;
+            font-weight: normal;
+            height: 4px;
+            overflow: hidden;
+            text-indent: -99em;
+            width: 0;
+        }
+
+    .upload-box .upload-progress .close {
+        background: rgba(0, 0, 0, 0) url("/admin/skin/default/skin_icons.png") no-repeat scroll -112px -168px;
+        cursor: pointer;
+        display: block;
+        height: 14px;
+        overflow: hidden;
+        position: absolute;
+        right: 1px;
+        text-indent: -99em;
+        top: 1px;
+        width: 14px;
+    }
+
+.photo-list {
+    margin: 0;
+    padding: 10px 0 0;
+}
+
+    .photo-list ul li {
+        float: left;
+        margin-right: 10px;
+        text-align: center;
+    }
+
+        .photo-list ul li .img-box.selected {
+            border: 3px solid #f60;
+        }
+
+        .photo-list ul li .img-box img {
+            height: 128px;
+            opacity: 1;
+            width: 128px;
+        }
+
+        .photo-list ul li .img-box {
+            border: 3px solid #efefed;
+            cursor: pointer;
+            height: 128px;
+            margin: 5px 5px 5px auto;
+            overflow: hidden;
+            position: relative;
+            width: 128px;
+        }
+
+        .photo-list ul li a {
+            padding-right: 1em;
+        }
+

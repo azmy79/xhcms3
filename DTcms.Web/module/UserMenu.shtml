@@ -1,0 +1,26 @@
+﻿<div class="left_user">
+    <div class="message">用户中心 </div>
+    <ul>
+        <li><a href="UserBid.aspx" taghref="UserBid.aspx">我的申办</a></li>
+        <li><a href="UserBidOrder.aspx" taghref="UserBidOrder.aspx">我的订单</a></li>
+        <li><a href="UserAppointment.aspx" taghref="UserAppointment.aspx">我的预约</a></li>
+        <li><a href="UserFeedBack.aspx" taghref="UserFeedBack.aspx">我的咨询</a></li>
+        <li style="display: none"><a href="UserBidComment.aspx" taghref="UserBidCommentList.aspx">评论服务</a></li>
+        <li><a href="UserBidCommentList.aspx" taghref="UserBidCommentList.aspx">我的评论</a></li>
+        <li><a href="UserCenter.aspx" taghref="UserCenter.aspx">我的信息</a></li>
+        <li><a href="UserUpdatePwd.aspx" taghref="UserUpdatePwd.aspx">修改密码</a></li>
+        <li><a href="UserLoginOut.aspx" taghref="UserLoginOut.aspx">退出登录</a></li>
+    </ul>
+</div>
+<script>
+    $(function () {
+        //选中项
+        $.each($(".left_user a"), function (i, obj) {
+            if (location.href.indexOf($(obj).attr("href")) != -1) {
+                obj = $(".left_user a[href='" + $(obj).attr("taghref") + "']").get(0);
+                $(obj).addClass("hover_user");
+                $("<div class=\"tit\"><h2><span>" + $(obj).text() + "</span></h2><div class=\"bread\">您的位置：> <a href=\"index.aspx\">网站首页</a> > <a href=\"UserCenter.aspx\">用户中心</a> >" + $(obj).text() + "</div></div>").insertBefore($(".right_user div:first"));
+            }
+        });
+    });
+</script>

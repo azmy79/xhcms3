@@ -1,0 +1,81 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AppointmentDetail.aspx.cs" Inherits="DTcms.Web.admin.Appointment.AppointmentDetail" %>
+
+<!DOCTYPE>
+<html>
+<head>
+    <title>查看预约信息</title>
+    <link href="../skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="../../script/easydialog.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../scripts/jquery/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="../../scripts/lhgdialog/lhgdialog.js?skin=idialog"></script>
+    <script src="../../script/easydialog.min.js"></script>
+    <script type="text/javascript" src="../js/layout.js"></script>
+</head>
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a href="AppointmentList.aspx" class="back"><i></i><span>返回列表页</span></a>
+            <a href="../center.aspx" class="home"><i></i><span>首页</span></a>
+            <i class="arrow"></i>
+            <a href="AppointmentEdit.aspx"><span>预约信息管理</span></a>
+            <i class="arrow"></i>
+            <span>查看预约信息</span>
+        </div>
+        <div class="line10"></div>
+        <!--/导航栏-->
+
+        <!--内容-->
+        <div class="content-tab-wrap">
+            <div id="floatHead" class="content-tab">
+                <div class="content-tab-ul-wrap">
+                    <ul>
+                        <li><a href="javascript:;" onclick="tabs(this);" class="selected">基本信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <dl>
+                <dt>预约号</dt>
+                <dd><%=Model.Number %></dd>
+            </dl>
+            <dl>
+                <dt>会员账号</dt>
+                <dd><%=(new DTcms.BLL.users().GetModel(Model.UserID)??new DTcms.Model.users()).user_name %></dd>
+            </dl>
+            <dl>
+                <dt>预约时间</dt>
+                <dd><%=Model.Date.ToString("yyyy-MM-dd") %></dd>
+            </dl>
+            <dl>
+                <dt>姓名</dt>
+                <dd><%=Model.Name %></dd>
+            </dl>
+            <dl>
+                <dt>联系方式</dt>
+                <dd><%=Model.Contact %></dd>
+            </dl>
+            <dl>
+                <dt>办理公证事项</dt>
+                <dd><%=Model.Content %></dd>
+            </dl>
+            <dl>
+                <dt>创建时间</dt>
+                <dd><%=Model.AddTime.ToString("yyyy-MM-dd hh:mm:ss") %></dd>
+            </dl>
+        </div>
+        <!--/内容-->
+
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-list">
+                <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);" />
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--/工具栏-->
+    </form>
+</body>
+</html>

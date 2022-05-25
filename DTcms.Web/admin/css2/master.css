@@ -1,0 +1,27 @@
+/* CSS Document */
+body,ul,ol,li,p,h1,h2,h3,h4,h5,dl,dt,dd,h6,form,fieldset,table,tr,td,img,div,font{margin:0;padding:0;border:0;font-family:MSYH, Arial, Helvetica, sans-serif;}
+@font-face {
+    font-family:MSYH;
+    font-style:normal;
+    src: url(../css/MSYH.eot);
+}
+@font-face {
+    font-family:MNFHT;
+    font-style:normal;
+    src: url(../css/MNFHT.eot);
+}
+*{ margin:0; padding:0;}
+.h5px{ height:5px; line-height:5px; font-size:3px;overflow:hidden; clear:both;}
+.h10px{ height:10px; line-height:10px; overflow:hidden; clear:both;}
+.h15px{ height:15px; line-height:15px; overflow:hidden; clear:both;}
+.h20px{ height:20px; line-height:20px; overflow:hidden; clear:both;}
+ul,ol{list-style-type:none;}
+img{ vertical-align:top;border:0;;}
+.fB{font-weight:bold;}
+.f12px{font-size:12px;}
+.f14px{font-size:14px;}
+.left{float:left;}
+.right{float:right;}
+
+a{text-decoration:none; }
+a:hover{text-decoration:none; }

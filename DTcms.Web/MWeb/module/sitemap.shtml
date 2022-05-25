@@ -1,0 +1,22 @@
+﻿<div class="bread">
+    <a href="index.aspx">网站首页</a> &gt; 
+    <script>
+        //加载面包屑
+        (function () {
+            //JSON源
+            var navObj=<%=GetFullSiteMap(DTcms.Common.DTRequest.GetQueryInt("cid"))%>;
+            //递归输出导航
+            var writeNav=function(obj){
+                if(obj.SubNav){
+                    document.write("<a href=\""+obj.LinkUrl+"\">"+obj.Title+"</a> &gt; ");
+                    //递归装载
+                    writeNav(obj.SubNav);
+                }else{
+                    document.write(obj.Title);
+                }
+            };
+            //输出
+            writeNav(navObj);
+        })();
+    </script>
+</div>

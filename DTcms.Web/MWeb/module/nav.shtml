@@ -1,0 +1,21 @@
+﻿<div class="list_cat">
+    <div class="clear"></div>
+</div>
+<script>
+    (function(){
+        //所有菜单项
+        var navObj = <%=DTcms.Web.UI.BasePage.GetLeftFullNav(DTcms.Common.DTRequest.GetQueryInt("cid"))%>;
+        //当前项ID
+        var cid=<%=DTcms.Common.DTRequest.GetQueryInt("cid")%>;
+        //待输出HTML数组
+        var htmlArr = [];
+        //3级菜单以内
+        if(navObj.FullLevel < 3&&navObj.Nav.SubNav){
+            $.each(navObj.Nav.SubNav, function (i, obj) {
+                htmlArr.push("<a "+(obj.ID ==cid?"class=\"slected\"":"")+" href=\""+obj.LinkUrl+"\">"+obj.Title+"</a>");
+            });
+            //输出
+            $(htmlArr.join("")).insertBefore($(".list_cat .clear"));
+        }
+    })();
+</script>
