@@ -87,9 +87,10 @@ namespace DTcms.BLL
                         }
                         sucCount += sendCount; //成功数量
                     }
-                    catch
+                    catch(Exception ex)
                     {
-                        //没有动作
+                        //报错到前端
+                        errorMsg = ex.Message;
                     }
                 }
             }

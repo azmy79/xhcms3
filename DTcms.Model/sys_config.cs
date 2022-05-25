@@ -41,6 +41,10 @@ namespace DTcms.Model
         private string _smsusername = "";
         private string _smspassword = "";
 
+        private string _aliaccesskeyid = "";
+        private string _aliaccesskeysecret = "";
+        private string _alisignname = "";
+ 
         private string _emailsmtp = "";
         private int _emailport = 25;
         private string _emailfrom = "";
@@ -284,6 +288,28 @@ namespace DTcms.Model
             get { return _smspassword; }
             set { _smspassword = value; }
         }
+        #endregion
+
+        #region 阿里云短信平台设置==================================
+
+        public string aliaccesskeyid
+        {
+            get { return _aliaccesskeyid; }
+            set { _aliaccesskeyid = value; }
+        }
+
+        public string aliaccesskeysecret
+        {
+            get { return _aliaccesskeysecret; }
+            set { _aliaccesskeysecret = value; }
+        }
+
+        public string alisignname
+        {
+            get { return _alisignname; }
+            set { _alisignname = value; }
+        }
+
         #endregion
 
         #region 邮件发送设置==================================
