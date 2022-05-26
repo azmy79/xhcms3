@@ -88,23 +88,30 @@ namespace DTcms.Web.admin.Bid
                 {
                     var bidModel = new DTcms.BLL.View_Bid().GetModelList("ID=" + Convert.ToInt32(e.CommandArgument))[0];
                     var smsMsg = string.Empty;
-                    var msgBLL = new DTcms.BLL.sms_message();
+                    var msgBLL = new DTcms.BLL.ali_message();
                     //用户申办提醒
                     var userSMS = new BLL.sms_template().GetModel("UserCancelBid"); //取得短信内容
-                    msgBLL.Send(bidModel.Tel, userSMS.content
-                        .Replace("{Number}", bidModel.Number)
-                        .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
-                        , 1, out smsMsg);
+                    //msgBLL.Send(bidModel.Tel, userSMS.content
+                    //    .Replace("{Number}", bidModel.Number)
+                    //    .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
+                    //    , 1, out smsMsg);
+                    var msgParam = "{" + string.Format("\"Number\":\"{0}\",\"SendTime\":\"{1}\"",
+                        bidModel.Number, DateTime.Now.ToString("yyyy-MM-dd")) + "}";
+                    msgBLL.Send(bidModel.Tel, userSMS.content, 1, msgParam, out smsMsg);
+
 
                     //公证员申办提醒
                     var JusticeConfigModel = DTcms.Common.SerializationHelper.Load<DTcms.Model.JusticeConfig>(DTcms.Common.DTKeys.BIDCONFIG_JUSTICE_PATH);
                     var manageSMS = new BLL.sms_template().GetModel("ManageCancelBid"); //取得短信内容
-                    msgBLL.Send(JusticeConfigModel.Tel, manageSMS.content
-                        .Replace("{CnName}", bidModel.CnName)
-                        .Replace("{BidBusiness}", bidModel.BidBusiness)
-                        .Replace("{Number}", bidModel.Number)
-                        .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
-                        , 1, out smsMsg);
+                    //msgBLL.Send(JusticeConfigModel.Tel, manageSMS.content
+                    //    .Replace("{CnName}", bidModel.CnName)
+                    //    .Replace("{BidBusiness}", bidModel.BidBusiness)
+                    //    .Replace("{Number}", bidModel.Number)
+                    //    .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
+                    //    , 1, out smsMsg);
+                    msgParam = "{" + string.Format("\"CnName\":\"{0}\",\"BidBusiness\":\"{1}\",\"Number\":\"{2}\",\"SendTime\":\"{3}\"",
+                        bidModel.CnName, bidModel.BidBusiness, bidModel.Number, DateTime.Now.ToString("yyyy-MM-dd")) + "}";
+                    msgBLL.Send(JusticeConfigModel.Tel, manageSMS.content, 1, msgParam, out smsMsg);
                     JscriptMsg("取消申办成功！", "Success");
                 }
                 else

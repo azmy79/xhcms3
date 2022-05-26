@@ -115,11 +115,17 @@ namespace DTcms.Web.UI
             }
             //替换标签
             var msgContent = smsModel.content;
-            msgContent = msgContent.Replace("{code}", strcode);
-            msgContent = msgContent.Replace("{valid}", "2");
+            //msgContent = msgContent.Replace("{code}", strcode);
+            //msgContent = msgContent.Replace("{valid}", "2");
+
+            var msgParam = "{" + string.Format("\"code\":\"{0}\",\"valid\":\"{1}\"",strcode, 2) + "}";
+
             //发送短信
             var tipMsg = string.Empty;
-            var result = new BLL.sms_message().Send(phoneNum, msgContent, 1, out tipMsg);
+            //var result = new BLL.sms_message().Send(phoneNum, msgContent, 1, out tipMsg);
+
+            var result = new BLL.ali_message().Send(phoneNum, msgContent, 1, msgParam, out tipMsg);
+
             if (!result)
             {
                 return js.Serialize(new

@@ -36,6 +36,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="aliyun-net-sdk-core">
+      <HintPath>AliSMS\aliyun-net-sdk-core.dll</HintPath>
+    </Reference>
+    <Reference Include="aliyun-net-sdk-dysmsapi">
+      <HintPath>AliSMS\aliyun-net-sdk-dysmsapi.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
@@ -44,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ad.cs" />
     <Compile Include="ad_item.cs" />
+    <Compile Include="ali_message.cs" />
     <Compile Include="Appointment.cs" />
     <Compile Include="article.cs" />
     <Compile Include="article_attach.cs" />

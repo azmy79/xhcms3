@@ -52,6 +52,7 @@
     <th width="8%">选择</th>
     <th align="left" width="15%">调用别名</th>
     <th align="left">模板标题</th>
+    <th align="left">阿里云模板代码</th>
     <th width="8%">系统默认</th>
     <th width="10%">操作</th>
   </tr>
@@ -59,11 +60,12 @@
 <ItemTemplate>
   <tr>
     <td align="center">
-      <asp:CheckBox ID="chkId" CssClass="checkall" runat="server" Enabled='<%#bool.Parse((Convert.ToInt32(Eval("is_sys"))==0 ).ToString())%>' style="vertical-align:middle;" />
+      <asp:CheckBox ID="chkId" CssClass="checkall" runat="server" Enabled='true' style="vertical-align:middle;" />
       <asp:HiddenField ID="hidId" Value='<%#Eval("id")%>' runat="server" />
     </td>
     <td><%#Eval("call_index")%></td>
     <td><a href="sms_template_edit.aspx?action=<%#DTEnums.ActionEnum.Edit %>&id=<%#Eval("id")%>"><%#Eval("title")%></a></td>
+      <td><%#Eval("content")%></td>
     <td align="center"><%#Convert.ToInt32(Eval("is_sys")) == 1 ? "是" : "否"%></td>
     <td align="center"><a href="sms_template_edit.aspx?action=<%#DTEnums.ActionEnum.Edit %>&id=<%#Eval("id")%>">修改</a></td>
   </tr>

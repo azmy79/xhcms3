@@ -25,7 +25,8 @@ namespace DTcms.Web.admin.users
             if (!Page.IsPostBack)
             {
                 ChkAdminLevel("user_sms_template", DTEnums.ActionEnum.View.ToString()); //检查权限
-                RptBind("id>5" + CombSqlTxt(keywords), "id asc");
+                //RptBind("id>5" + CombSqlTxt(keywords), "id asc");
+                RptBind("" + CombSqlTxt(keywords), "id asc");
             }
         }
 

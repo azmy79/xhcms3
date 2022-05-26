@@ -113,7 +113,8 @@ namespace DTcms.Web.admin.users
                 }
                 //开始发送短信
                 string msg=string.Empty;
-                bool result = new BLL.sms_message().Send(txtMobileNumbers.Text.Trim(), txtSmsContent.Text.Trim(), 2, out msg);
+                //bool result = new BLL.sms_message().Send(txtMobileNumbers.Text.Trim(), txtSmsContent.Text.Trim(), 2, out msg);
+                bool result = false;
                 if (result)
                 {
                     AddAdminLog(DTEnums.ActionEnum.Add.ToString(), "发送手机短信"); //记录日志
@@ -141,7 +142,8 @@ namespace DTcms.Web.admin.users
                 string _mobiles = GetGroupMobile(al);
                 //开始发送短信
                 string msg = string.Empty;
-                bool result = new BLL.sms_message().Send(_mobiles, txtSmsContent.Text.Trim(), 2, out msg);
+                //bool result = new BLL.sms_message().Send(_mobiles, txtSmsContent.Text.Trim(), 2, out msg);
+                bool result = false;
                 if (result)
                 {
                     AddAdminLog(DTEnums.ActionEnum.Add.ToString(), "发送手机短信"); //记录日志

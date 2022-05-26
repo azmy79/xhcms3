@@ -81,25 +81,31 @@ namespace DTcms.Web.admin.Bid
             if (ret && new DTcms.BLL.Bid().UpdateField(ID, "Status=" + rblStatus.SelectedValue + ",Price=" + txtPrice.Text.Trim()))
             {
                 var smsMsg = string.Empty;
-                var msgBLL = new DTcms.BLL.sms_message();
+                var msgBLL = new DTcms.BLL.ali_message();
                 //审核不通过
                 if (rblStatus.SelectedValue == "0")
                 {
                     //用户审核通过提醒
                     var userSMS = new BLL.sms_template().GetModel("UserAuditFalse"); //取得短信内容
-                    msgBLL.Send(BidModel.Tel, userSMS.content
-                   .Replace("{Number}", BidModel.Number)
-                   .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
-                   , 1, out smsMsg);
+                   // msgBLL.Send(BidModel.Tel, userSMS.content
+                   //.Replace("{Number}", BidModel.Number)
+                   //.Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
+                   //, 1, out smsMsg);
+                   var msgParam = "{" + string.Format("\"Number\":\"{0}\",\"SendTime\":\"{1}\"",
+                        BidModel.Number, DateTime.Now.ToString("yyyy-MM-dd")) + "}";
+                    msgBLL.Send(BidModel.Tel, userSMS.content, 1, msgParam, out smsMsg);
                 }
                 else
                 {
                     //用户审核不通过提醒
                     var userSMS = new BLL.sms_template().GetModel("UserAuditTrue"); //取得短信内容
-                    msgBLL.Send(BidModel.Tel, userSMS.content
-                   .Replace("{Number}", BidModel.Number)
-                   .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
-                   , 1, out smsMsg);
+                   // msgBLL.Send(BidModel.Tel, userSMS.content
+                   //.Replace("{Number}", BidModel.Number)
+                   //.Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
+                   //, 1, out smsMsg);
+                   var msgParam = "{" + string.Format("\"Number\":\"{0}\",\"SendTime\":\"{1}\"",
+                        BidModel.Number, DateTime.Now.ToString("yyyy-MM-dd")) + "}";
+                    msgBLL.Send(BidModel.Tel, userSMS.content, 1, msgParam, out smsMsg);
                 }
                 JscriptMsg("保存成功！", "BidList.aspx", "Success");
             }

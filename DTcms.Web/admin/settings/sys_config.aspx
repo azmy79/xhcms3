@@ -233,7 +233,7 @@
 <!--/功能权限设置-->
 
 <!--手机短信设置-->
-<div class="tab-content" style="display:none">
+<%--<div class="tab-content" style="display:none">
   <dl>
     <dt>短信剩余数量</dt>
     <dd>
@@ -261,6 +261,32 @@
       请不要使用系统默认账户test，因为它是公用的测试账号；<br />
       请在短信平台修改账户资料中绑定签名方可使用短信功能；<br />
       如果您尚未申请开通，<a href="http://sms.dtcms.net" target="_blank">请点击这里注册</a>成功后填写您的用户名和密码均可正常使用。
+    </dd>
+  </dl>
+</div>--%>
+<!--/手机短信设置-->
+
+<!--阿里云 手机短信设置-->
+<div class="tab-content" style="display:none">
+  <dl>
+    <dt>平台登录账户</dt>
+    <dd>
+      <asp:TextBox ID="aliaccesskeyid" runat="server" CssClass="input normal" />
+      <span class="Validform_checktip">*阿里云平台注册的AccessKeyId</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>平台登录密码</dt>
+    <dd>
+      <asp:TextBox ID="aliaccesskeysecret" runat="server" CssClass="input normal"/>
+      <span class="Validform_checktip">*阿里云平台注册的AccessKeySecret</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>用户的签名</dt>
+    <dd>
+      <asp:TextBox ID="alisignname" runat="server" CssClass="input normal" />
+      <span class="Validform_checktip">*阿里云平台注册的签名</span>
     </dd>
   </dl>
 </div>

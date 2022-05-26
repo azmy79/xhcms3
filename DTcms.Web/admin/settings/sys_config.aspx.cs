@@ -79,12 +79,15 @@ namespace DTcms.Web.admin.settings
             webclosereason.Text = model.webclosereason;
             webcountcode.Text = model.webcountcode;
 
-            smsusername.Text = model.smsusername;
-            if (!string.IsNullOrEmpty(model.smspassword))
-            {
-                smspassword.Attributes["value"] = defaultpassword;
-            }
-            labSmsCount.Text = GetSmsCount(); //取得短信数量
+            //smsusername.Text = model.smsusername;
+            //if (!string.IsNullOrEmpty(model.smspassword))
+            //{
+            //    smspassword.Attributes["value"] = defaultpassword;
+            //}
+            //labSmsCount.Text = GetSmsCount(); //取得短信数量
+            aliaccesskeyid.Text = model.aliaccesskeyid;
+            aliaccesskeysecret.Text = model.aliaccesskeysecret;
+            alisignname.Text = model.alisignname;
 
             emailsmtp.Text = model.emailsmtp;
             emailport.Text = model.emailport.ToString();
@@ -117,20 +120,20 @@ namespace DTcms.Web.admin.settings
         #endregion
 
         #region 获取短信数量=================================
-        private string GetSmsCount()
-        {
-            string code = string.Empty;
-            int count = new BLL.sms_message().GetAccountQuantity(out code);
-            if (code == "115")
-            {
-                return "查询出错：请完善账户信息";
-            }
-            else if (code != "100")
-            {
-                return "错误代码：" + code;
-            }
-            return count + " 条";
-        }
+        //private string GetSmsCount()
+        //{
+        //    string code = string.Empty;
+        //    int count = new BLL.ali_message().GetAccountQuantity(out code);
+        //    if (code == "115")
+        //    {
+        //        return "查询出错：请完善账户信息";
+        //    }
+        //    else if (code != "100")
+        //    {
+        //        return "错误代码：" + code;
+        //    }
+        //    return count + " 条";
+        //}
         #endregion
 
         /// <summary>
@@ -196,12 +199,16 @@ namespace DTcms.Web.admin.settings
                 model.webclosereason = webclosereason.Text;
                 model.webcountcode = webcountcode.Text;
 
-                model.smsusername = smsusername.Text;
-                //判断密码是否更改
-                if (smspassword.Text.Trim() != "" && smspassword.Text.Trim() != defaultpassword)
-                {
-                    model.smspassword = Utils.MD5(smspassword.Text.Trim());
-                }
+                //model.smsusername = smsusername.Text;
+                ////判断密码是否更改
+                //if (smspassword.Text.Trim() != "" && smspassword.Text.Trim() != defaultpassword)
+                //{
+                //    model.smspassword = Utils.MD5(smspassword.Text.Trim());
+                //}
+
+                model.aliaccesskeyid = aliaccesskeyid.Text;
+                model.aliaccesskeysecret = aliaccesskeysecret.Text;
+                model.alisignname = alisignname.Text;
 
                 model.emailsmtp = emailsmtp.Text;
                 model.emailport = Utils.StrToInt(emailport.Text.Trim(), 25);

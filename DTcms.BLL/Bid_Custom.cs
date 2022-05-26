@@ -60,23 +60,30 @@ namespace DTcms.BLL
             #region 发送短信
             var bidModel = new DTcms.BLL.View_Bid().GetModelList("ID=" + bidid)[0];
             var smsMsg = string.Empty;
-            var msgBLL = new DTcms.BLL.sms_message();
-            //用户申办提醒
+            var msgBLL = new DTcms.BLL.ali_message();
+            //用户付款提醒
             var userSMS = new BLL.sms_template().GetModel("UserPay"); //取得短信内容
-            msgBLL.Send(bidModel.Tel, userSMS.content
-                .Replace("{OrderNo}", orderNo)
-                .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
-                , 1, out smsMsg);
+            var msgParam = "{" + string.Format("\"OrderNo\":\"{0}\",\"SendTime\":\"{1}\"",orderNo, DateTime.Now.ToString("yyyy-MM-dd")) + "}";
 
-            //公证员申办提醒
+            //msgBLL.Send(bidModel.Tel, userSMS.content
+            //    .Replace("{OrderNo}", orderNo)
+            //    .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
+            //    , 1, out smsMsg);
+            msgBLL.Send(bidModel.Tel, userSMS.content, 1, msgParam, out smsMsg);
+
+            //	公证员付款提醒
             var JusticeConfigModel = DTcms.Common.SerializationHelper.Load<DTcms.Model.JusticeConfig>(DTcms.Common.DTKeys.BIDCONFIG_JUSTICE_PATH);
             var manageSMS = new BLL.sms_template().GetModel("ManagePay"); //取得短信内容
-            msgBLL.Send(JusticeConfigModel.Tel, manageSMS.content
-                .Replace("{CnName}", bidModel.CnName)
-                .Replace("{BidBusiness}", bidModel.BidBusiness)
-                .Replace("{OrderNo}", orderNo)
-                .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
-                , 1, out smsMsg);
+            //msgBLL.Send(JusticeConfigModel.Tel, manageSMS.content
+            //    .Replace("{CnName}", bidModel.CnName)
+            //    .Replace("{BidBusiness}", bidModel.BidBusiness)
+            //    .Replace("{OrderNo}", orderNo)
+            //    .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
+            //    , 1, out smsMsg);
+            msgParam = "{" + string.Format("\"CnName\":\"{0}\",\"BidBusiness\":\"{1}\",\"OrderNo\":\"{2}\",\"SendTime\":\"{3}\"",
+                bidModel.CnName, bidModel.BidBusiness, orderNo, DateTime.Now.ToString("yyyy-MM-dd")) + "}";
+            msgBLL.Send(JusticeConfigModel.Tel, manageSMS.content, 1, msgParam, out smsMsg);
+
             #endregion
         }
     }

@@ -442,12 +442,12 @@ namespace DTcms.Web.tools
                                 msgContent = msgContent.Replace("{amount}", model.order_amount.ToString());
                                 //发送短信
                                 string tipMsg = string.Empty;
-                                bool sendStatus = new BLL.sms_message().Send(model.mobile, msgContent, 2, out tipMsg);
-                                if (!sendStatus)
-                                {
-                                    context.Response.Write("{\"status\": 1, \"msg\": \"订单确认成功，但无法发送短信<br/ >" + tipMsg + "\"}");
-                                    return;
-                                }
+                                //bool sendStatus = new BLL.ali_message().Send(model.mobile, msgContent, 2, out tipMsg);
+                                //if (!sendStatus)
+                                //{
+                                //    context.Response.Write("{\"status\": 1, \"msg\": \"订单确认成功，但无法发送短信<br/ >" + tipMsg + "\"}");
+                                //    return;
+                                //}
                                 break;
                             case 2: //邮件通知
                                 //取得用户的邮箱地址
@@ -533,12 +533,12 @@ namespace DTcms.Web.tools
                                 msgContent = msgContent.Replace("{amount}", model.order_amount.ToString());
                                 //发送短信
                                 string tipMsg = string.Empty;
-                                bool sendStatus = new BLL.sms_message().Send(model.mobile, msgContent, 2, out tipMsg);
-                                if (!sendStatus)
-                                {
-                                    context.Response.Write("{\"status\": 1, \"msg\": \"订单确认成功，但无法发送短信<br/ >" + tipMsg + "\"}");
-                                    return;
-                                }
+                                //bool sendStatus = new BLL.ali_message().Send(model.mobile, msgContent, 2, out tipMsg);
+                                //if (!sendStatus)
+                                //{
+                                //    context.Response.Write("{\"status\": 1, \"msg\": \"订单确认成功，但无法发送短信<br/ >" + tipMsg + "\"}");
+                                //    return;
+                                //}
                                 break;
                             case 2: //邮件通知
                                 //取得用户的邮箱地址
@@ -631,12 +631,12 @@ namespace DTcms.Web.tools
                                 msgContent = msgContent.Replace("{amount}", model.order_amount.ToString());
                                 //发送短信
                                 string tipMsg = string.Empty;
-                                bool sendStatus = new BLL.sms_message().Send(model.mobile, msgContent, 2, out tipMsg);
-                                if (!sendStatus)
-                                {
-                                    context.Response.Write("{\"status\": 1, \"msg\": \"订单确认成功，但无法发送短信<br/ >" + tipMsg + "\"}");
-                                    return;
-                                }
+                                //bool sendStatus = new BLL.ali_message().Send(model.mobile, msgContent, 2, out tipMsg);
+                                //if (!sendStatus)
+                                //{
+                                //    context.Response.Write("{\"status\": 1, \"msg\": \"订单确认成功，但无法发送短信<br/ >" + tipMsg + "\"}");
+                                //    return;
+                                //}
                                 break;
                             case 2: //邮件通知
                                 //取得用户的邮箱地址
@@ -725,12 +725,12 @@ namespace DTcms.Web.tools
                                 msgContent = msgContent.Replace("{amount}", model.order_amount.ToString());
                                 //发送短信
                                 string tipMsg = string.Empty;
-                                bool sendStatus = new BLL.sms_message().Send(model.mobile, msgContent, 2, out tipMsg);
-                                if (!sendStatus)
-                                {
-                                    context.Response.Write("{\"status\": 1, \"msg\": \"订单确认成功，但无法发送短信<br/ >" + tipMsg + "\"}");
-                                    return;
-                                }
+                                //bool sendStatus = new BLL.ali_message().Send(model.mobile, msgContent, 2, out tipMsg);
+                                //if (!sendStatus)
+                                //{
+                                //    context.Response.Write("{\"status\": 1, \"msg\": \"订单确认成功，但无法发送短信<br/ >" + tipMsg + "\"}");
+                                //    return;
+                                //}
                                 break;
                             case 2: //邮件通知
                                 //取得用户的邮箱地址
@@ -1038,7 +1038,8 @@ namespace DTcms.Web.tools
             }
             //开始发送
             string msg = string.Empty;
-            bool result = new BLL.sms_message().Send(mobiles, content, 2, out msg);
+            //bool result = new BLL.sms_message().Send(mobiles, content, 2, out msg);
+            bool result = false;
             if (result)
             {
                 context.Response.Write("{\"status\": 1, \"msg\": \"" + msg + "\"}");

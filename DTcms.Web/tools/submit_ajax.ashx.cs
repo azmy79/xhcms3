@@ -456,13 +456,16 @@ namespace DTcms.Web.tools
                 {
                     //替换标签
                     string msgContent = smsModel.content;
-                    msgContent = msgContent.Replace("{webname}", siteConfig.webname);
-                    msgContent = msgContent.Replace("{weburl}", siteConfig.weburl);
-                    msgContent = msgContent.Replace("{webtel}", siteConfig.webtel);
-                    msgContent = msgContent.Replace("{username}", model.user_name);
+                    //msgContent = msgContent.Replace("{webname}", siteConfig.webname);
+                    //msgContent = msgContent.Replace("{weburl}", siteConfig.weburl);
+                    //msgContent = msgContent.Replace("{webtel}", siteConfig.webtel);
+                    //msgContent = msgContent.Replace("{username}", model.user_name);
                     //发送短信
                     string tipMsg = string.Empty;
-                    new BLL.sms_message().Send(model.mobile, msgContent, 2, out tipMsg);
+                    var msgParam = "{" + string.Format("\"webname\":\"{0}\",\"weburl\":\"{1}\",\"webtel\":\"{2}\",\"username\":\"{3}\"",
+                        siteConfig.webname, siteConfig.weburl, siteConfig.webtel, model.user_name) + "}";
+
+                    new BLL.ali_message().Send(model.mobile, msgContent, 2, msgParam, out tipMsg);
                 }
             }
             #endregion
@@ -629,15 +632,18 @@ namespace DTcms.Web.tools
             }
             //替换模板内容
             string msgContent = smsModel.content;
-            msgContent = msgContent.Replace("{webname}", siteConfig.webname);
-            msgContent = msgContent.Replace("{webtel}", siteConfig.webtel);
-            msgContent = msgContent.Replace("{weburl}", siteConfig.weburl);
-            msgContent = msgContent.Replace("{username}", userModel.user_name);
-            msgContent = msgContent.Replace("{code}", codeModel.str_code);
-            msgContent = msgContent.Replace("{valid}", userConfig.regsmsexpired.ToString());
+            //msgContent = msgContent.Replace("{webname}", siteConfig.webname);
+            //msgContent = msgContent.Replace("{webtel}", siteConfig.webtel);
+            //msgContent = msgContent.Replace("{weburl}", siteConfig.weburl);
+            //msgContent = msgContent.Replace("{username}", userModel.user_name);
+            //msgContent = msgContent.Replace("{code}", codeModel.str_code);
+            //msgContent = msgContent.Replace("{valid}", userConfig.regsmsexpired.ToString());
             //发送短信
             string tipMsg = string.Empty;
-            bool sendStatus = new BLL.sms_message().Send(userModel.mobile, msgContent, 2, out tipMsg);
+            var msgParam = "{" + string.Format("\"webname\":\"{0}\",\"weburl\":\"{1}\",\"webtel\":\"{2}\",\"username\":\"{3}\",\"code\":\"{4}\",\"valid\":\"{5}\"",
+siteConfig.webname, siteConfig.weburl, siteConfig.webtel, userModel.user_name, codeModel.str_code, userConfig.regsmsexpired.ToString()) + "}";
+
+            bool sendStatus = new BLL.ali_message().Send(userModel.mobile, msgContent, 2, msgParam, out tipMsg);
             if (!sendStatus)
             {
                 return "{\"status\": 0, \"msg\": \"短信发送失败，" + tipMsg + "\"}";
@@ -719,14 +725,17 @@ namespace DTcms.Web.tools
             string strcode = Utils.Number(4); //随机验证码
             //替换标签
             string msgContent = smsModel.content;
-            msgContent = msgContent.Replace("{webname}", siteConfig.webname);
-            msgContent = msgContent.Replace("{weburl}", siteConfig.weburl);
-            msgContent = msgContent.Replace("{webtel}", siteConfig.webtel);
-            msgContent = msgContent.Replace("{code}", strcode);
-            msgContent = msgContent.Replace("{valid}", "二十");
+            //msgContent = msgContent.Replace("{webname}", siteConfig.webname);
+            //msgContent = msgContent.Replace("{weburl}", siteConfig.weburl);
+            //msgContent = msgContent.Replace("{webtel}", siteConfig.webtel);
+            //msgContent = msgContent.Replace("{code}", strcode);
+            //msgContent = msgContent.Replace("{valid}", "二十");
             //发送短信
             string tipMsg = string.Empty;
-            bool result = new BLL.sms_message().Send(mobile, msgContent, 1, out tipMsg);
+            var msgParam = "{" + string.Format("\"webname\":\"{0}\",\"weburl\":\"{1}\",\"webtel\":\"{2}\",\"code\":\"{3}\",\"valid\":\"{4}\"",
+siteConfig.webname, siteConfig.weburl, siteConfig.webtel, strcode, "二十") + "}";
+
+            bool result = new BLL.ali_message().Send(mobile, msgContent, 1, msgParam, out tipMsg);
             if (!result)
             {
                 context.Response.Write("{\"status\":0, \"msg\":\"发送失败，" + tipMsg + "\"}");
@@ -738,6 +747,7 @@ namespace DTcms.Web.tools
             context.Response.Write("{\"status\":1, \"msg\":\"短信发送成功，请注意查收验证码！\"}");
             return;
         }
+
         #endregion
 
         #region 发送注册验证邮件=============================
@@ -1023,13 +1033,18 @@ namespace DTcms.Web.tools
                 {
                     //替换标签
                     string msgContent = smsModel.content;
-                    msgContent = msgContent.Replace("{webname}", siteConfig.webname);
-                    msgContent = msgContent.Replace("{weburl}", siteConfig.weburl);
-                    msgContent = msgContent.Replace("{webtel}", siteConfig.webtel);
-                    msgContent = msgContent.Replace("{username}", model.user_name);
+                    //msgContent = msgContent.Replace("{webname}", siteConfig.webname);
+                    //msgContent = msgContent.Replace("{weburl}", siteConfig.weburl);
+                    //msgContent = msgContent.Replace("{webtel}", siteConfig.webtel);
+                    //msgContent = msgContent.Replace("{username}", model.user_name);
                     //发送短信
                     string tipMsg = string.Empty;
-                    new BLL.sms_message().Send(model.mobile, msgContent, 2, out tipMsg);
+                    var msgParam = "{" + string.Format("\"webname\":\"{0}\",\"weburl\":\"{1}\",\"webtel\":\"{2}\",\"username\":\"{3}\"",
+                        siteConfig.webname, siteConfig.weburl, siteConfig.webtel, model.user_name) + "}";
+
+                    new BLL.ali_message().Send(model.mobile, msgContent, 2, msgParam, out tipMsg);
+
+                    //new BLL.ali_message().Send(model.mobile, msgContent, 2, out tipMsg);
                 }
             }
             //绑定到对应的授权类型
