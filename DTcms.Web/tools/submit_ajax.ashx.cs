@@ -462,10 +462,10 @@ namespace DTcms.Web.tools
                     //msgContent = msgContent.Replace("{username}", model.user_name);
                     //发送短信
                     string tipMsg = string.Empty;
-                    var msgParam = "{" + string.Format("\"webname\":\"{0}\",\"weburl\":\"{1}\",\"webtel\":\"{2}\",\"username\":\"{3}\"",
-                        siteConfig.webname, siteConfig.weburl, siteConfig.webtel, model.user_name) + "}";
+                    var msgParam = string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\"",
+                        siteConfig.webname, siteConfig.weburl, siteConfig.webtel, model.user_name);
 
-                    new BLL.ali_message().Send(model.mobile, msgContent, 2, msgParam, out tipMsg);
+                    new BLL.tx_message().Send(model.mobile, msgContent, 2, msgParam, out tipMsg);
                 }
             }
             #endregion
@@ -640,10 +640,10 @@ namespace DTcms.Web.tools
             //msgContent = msgContent.Replace("{valid}", userConfig.regsmsexpired.ToString());
             //发送短信
             string tipMsg = string.Empty;
-            var msgParam = "{" + string.Format("\"webname\":\"{0}\",\"weburl\":\"{1}\",\"webtel\":\"{2}\",\"username\":\"{3}\",\"code\":\"{4}\",\"valid\":\"{5}\"",
-siteConfig.webname, siteConfig.weburl, siteConfig.webtel, userModel.user_name, codeModel.str_code, userConfig.regsmsexpired.ToString()) + "}";
+            var msgParam = string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\"",
+siteConfig.webname, siteConfig.weburl, siteConfig.webtel, userModel.user_name, codeModel.str_code, userConfig.regsmsexpired.ToString());
 
-            bool sendStatus = new BLL.ali_message().Send(userModel.mobile, msgContent, 2, msgParam, out tipMsg);
+            bool sendStatus = new BLL.tx_message().Send(userModel.mobile, msgContent, 2, msgParam, out tipMsg);
             if (!sendStatus)
             {
                 return "{\"status\": 0, \"msg\": \"短信发送失败，" + tipMsg + "\"}";
@@ -732,10 +732,10 @@ siteConfig.webname, siteConfig.weburl, siteConfig.webtel, userModel.user_name, c
             //msgContent = msgContent.Replace("{valid}", "二十");
             //发送短信
             string tipMsg = string.Empty;
-            var msgParam = "{" + string.Format("\"webname\":\"{0}\",\"weburl\":\"{1}\",\"webtel\":\"{2}\",\"code\":\"{3}\",\"valid\":\"{4}\"",
-siteConfig.webname, siteConfig.weburl, siteConfig.webtel, strcode, "二十") + "}";
+            var msgParam = string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\"",
+siteConfig.webname, siteConfig.weburl, siteConfig.webtel, strcode, "二十");
 
-            bool result = new BLL.ali_message().Send(mobile, msgContent, 1, msgParam, out tipMsg);
+            bool result = new BLL.tx_message().Send(mobile, msgContent, 1, msgParam, out tipMsg);
             if (!result)
             {
                 context.Response.Write("{\"status\":0, \"msg\":\"发送失败，" + tipMsg + "\"}");
@@ -1039,10 +1039,10 @@ siteConfig.webname, siteConfig.weburl, siteConfig.webtel, strcode, "二十") + "
                     //msgContent = msgContent.Replace("{username}", model.user_name);
                     //发送短信
                     string tipMsg = string.Empty;
-                    var msgParam = "{" + string.Format("\"webname\":\"{0}\",\"weburl\":\"{1}\",\"webtel\":\"{2}\",\"username\":\"{3}\"",
-                        siteConfig.webname, siteConfig.weburl, siteConfig.webtel, model.user_name) + "}";
+                    var msgParam = string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\"",
+                        siteConfig.webname, siteConfig.weburl, siteConfig.webtel, model.user_name);
 
-                    new BLL.ali_message().Send(model.mobile, msgContent, 2, msgParam, out tipMsg);
+                    new BLL.tx_message().Send(model.mobile, msgContent, 2, msgParam, out tipMsg);
 
                     //new BLL.ali_message().Send(model.mobile, msgContent, 2, out tipMsg);
                 }

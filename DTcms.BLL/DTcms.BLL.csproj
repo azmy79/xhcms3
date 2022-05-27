@@ -50,7 +50,7 @@
   <ItemGroup>
     <Compile Include="ad.cs" />
     <Compile Include="ad_item.cs" />
-    <Compile Include="ali_message.cs" />
+    <Compile Include="tx_message.cs" />
     <Compile Include="Appointment.cs" />
     <Compile Include="article.cs" />
     <Compile Include="article_attach.cs" />
@@ -89,7 +89,6 @@
     <Compile Include="Purpose.cs" />
     <Compile Include="Scheduling.cs" />
     <Compile Include="Scheduling_Custom.cs" />
-    <Compile Include="sms_message.cs" />
     <Compile Include="sms_template.cs" />
     <Compile Include="sys_config.cs" />
     <Compile Include="TRLanguage.cs" />

@@ -60,10 +60,10 @@ namespace DTcms.BLL
             #region 发送短信
             var bidModel = new DTcms.BLL.View_Bid().GetModelList("ID=" + bidid)[0];
             var smsMsg = string.Empty;
-            var msgBLL = new DTcms.BLL.ali_message();
+            var msgBLL = new DTcms.BLL.tx_message();
             //用户付款提醒
             var userSMS = new BLL.sms_template().GetModel("UserPay"); //取得短信内容
-            var msgParam = "{" + string.Format("\"OrderNo\":\"{0}\",\"SendTime\":\"{1}\"",orderNo, DateTime.Now.ToString("yyyy-MM-dd")) + "}";
+            var msgParam = string.Format("\"{0}\",\"{1}\"",orderNo, DateTime.Now.ToString("yyyy-MM-dd"));
 
             //msgBLL.Send(bidModel.Tel, userSMS.content
             //    .Replace("{OrderNo}", orderNo)
@@ -80,7 +80,7 @@ namespace DTcms.BLL
             //    .Replace("{OrderNo}", orderNo)
             //    .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
             //    , 1, out smsMsg);
-            msgParam = "{" + string.Format("\"CnName\":\"{0}\",\"BidBusiness\":\"{1}\",\"OrderNo\":\"{2}\",\"SendTime\":\"{3}\"",
+            msgParam =string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\"",
                 bidModel.CnName, bidModel.BidBusiness, orderNo, DateTime.Now.ToString("yyyy-MM-dd")) + "}";
             msgBLL.Send(JusticeConfigModel.Tel, manageSMS.content, 1, msgParam, out smsMsg);
 

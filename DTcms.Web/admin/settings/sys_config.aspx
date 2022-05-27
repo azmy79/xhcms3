@@ -267,7 +267,7 @@
 <!--/手机短信设置-->
 
 <!--阿里云 手机短信设置-->
-<div class="tab-content" style="display:none">
+<%--<div class="tab-content" style="display:none">
   <dl>
     <dt>平台登录账户</dt>
     <dd>
@@ -287,6 +287,32 @@
     <dd>
       <asp:TextBox ID="alisignname" runat="server" CssClass="input normal" />
       <span class="Validform_checktip">*阿里云平台注册的签名</span>
+    </dd>
+  </dl>
+</div>--%>
+<!--/手机短信设置-->
+
+<!--腾讯云 手机短信设置-->
+<div class="tab-content" style="display:none">
+  <dl>
+    <dt>平台API密钥SecretId</dt>
+    <dd>
+      <asp:TextBox ID="txsecretid" runat="server" CssClass="input normal" />
+      <span class="Validform_checktip">*腾讯云平台注册的SecretId</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>平台API密钥SecretKey</dt>
+    <dd>
+      <asp:TextBox ID="txsecretkey" runat="server" CssClass="input normal"/>
+      <span class="Validform_checktip">*腾讯云平台注册的SecretKey</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>平台用户的签名</dt>
+    <dd>
+      <asp:TextBox ID="txsignname" runat="server" CssClass="input normal" />
+      <span class="Validform_checktip">*腾讯云平台注册的签名</span>
     </dd>
   </dl>
 </div>

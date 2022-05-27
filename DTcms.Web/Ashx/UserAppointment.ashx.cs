@@ -94,7 +94,7 @@ namespace DTcms.Web.Ashx
                     if (new BLL.Appointment().Add(model) > 1)
                     {
                         var smsMsg = string.Empty;
-                        var msgBLL = new BLL.ali_message();
+                        var msgBLL = new BLL.tx_message();
                         var managerInfo = new DTcms.BLL.manager().GetModel(model.ManagerID);
                         //用户预约提醒
                         var userSMS = new BLL.sms_template().GetModel("UserAppointment"); //取得短信内容
@@ -102,8 +102,8 @@ namespace DTcms.Web.Ashx
                         //    .Replace("{name}", managerInfo.real_name)
                         //    .Replace("{time}", model.Date.ToString("yyyy-MM-dd"))
                         //    .Replace("{number}", model.Number), 1, out smsMsg);
-                        var msgParam = "{" + string.Format("\"name\":\"{0}\",\"time\":\"{1}\",\"number\":\"{2}\"",
-                        managerInfo.real_name, model.Date.ToString("yyyy-MM-dd"), model.Number) + "}";
+                        var msgParam = string.Format("\"{0}\",\"{1}\",\"{2}\"",
+                        managerInfo.real_name, model.Date.ToString("yyyy-MM-dd"), model.Number);
                         msgBLL.Send(model.Contact, userSMS.content, 1, msgParam, out smsMsg);
 
                         //公证员预约提醒
@@ -112,8 +112,8 @@ namespace DTcms.Web.Ashx
                         //    .Replace("{name}", model.Name)
                         //    .Replace("{time}", model.Date.ToString("yyyy-MM-dd"))
                         //    .Replace("{number}", model.Number), 1, out smsMsg);
-                        msgParam = "{" + string.Format("\"name\":\"{0}\",\"time\":\"{1}\",\"number\":\"{2}\"",
-                        model.Name, model.Date.ToString("yyyy-MM-dd"), model.Number) + "}";
+                        msgParam = string.Format("\"{0}\",\"{1}\",\"{2}\"",
+                        model.Name, model.Date.ToString("yyyy-MM-dd"), model.Number);
                         msgBLL.Send(managerInfo.telephone, manageSMS.content, 1, msgParam, out smsMsg);
 
                         context.Response.Write(jsSerializer.Serialize(new

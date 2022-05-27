@@ -85,9 +85,13 @@ namespace DTcms.Web.admin.settings
             //    smspassword.Attributes["value"] = defaultpassword;
             //}
             //labSmsCount.Text = GetSmsCount(); //取得短信数量
-            aliaccesskeyid.Text = model.aliaccesskeyid;
-            aliaccesskeysecret.Text = model.aliaccesskeysecret;
-            alisignname.Text = model.alisignname;
+            //aliaccesskeyid.Text = model.aliaccesskeyid;
+            //aliaccesskeysecret.Text = model.aliaccesskeysecret;
+            //alisignname.Text = model.alisignname;
+
+            txsecretid.Text = model.txaccesskeyid;
+            txsecretkey.Text = model.txaccesskeysecret;
+            txsignname.Text = model.txsignname;
 
             emailsmtp.Text = model.emailsmtp;
             emailport.Text = model.emailport.ToString();
@@ -206,9 +210,13 @@ namespace DTcms.Web.admin.settings
                 //    model.smspassword = Utils.MD5(smspassword.Text.Trim());
                 //}
 
-                model.aliaccesskeyid = aliaccesskeyid.Text;
-                model.aliaccesskeysecret = aliaccesskeysecret.Text;
-                model.alisignname = alisignname.Text;
+                //model.aliaccesskeyid = aliaccesskeyid.Text;
+                //model.aliaccesskeysecret = aliaccesskeysecret.Text;
+                //model.alisignname = alisignname.Text;
+
+                model.txaccesskeyid = txsecretid.Text;
+                model.txaccesskeysecret = txsecretkey.Text;
+                model.txsignname = txsignname.Text;
 
                 model.emailsmtp = emailsmtp.Text;
                 model.emailport = Utils.StrToInt(emailport.Text.Trim(), 25);

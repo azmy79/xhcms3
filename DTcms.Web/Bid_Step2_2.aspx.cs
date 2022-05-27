@@ -193,15 +193,14 @@ namespace DTcms.Web
             if (ret)
             {
                 var smsMsg = string.Empty;
-                var msgBLL = new DTcms.BLL.ali_message();
+                var msgBLL = new DTcms.BLL.tx_message();
                 //用户申办提醒
                 var userSMS = new BLL.sms_template().GetModel("UserBid"); //取得短信内容
                 //msgBLL.Send(bidModel.Tel, userSMS.content
                 //    .Replace("{Number}", bidModel.Number)
                 //    .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
                 //    , 1, out smsMsg);
-                var msgParam = "{" + string.Format("\"Number\":\"{0}\",\"SendTime\":\"{1}\"",
-                        bidModel.Number, DateTime.Now.ToString("yyyy-MM-dd")) + "}";
+                var msgParam = string.Format("\"{0}\",\"{1}\"", bidModel.Number, DateTime.Now.ToString("yyyy-MM-dd"));
                 msgBLL.Send(bidModel.Tel, userSMS.content, 1, msgParam, out smsMsg);
 
                 //公证员申办提醒
@@ -213,9 +212,9 @@ namespace DTcms.Web
                 //    .Replace("{Number}", bidModel.Number)
                 //    .Replace("{SendTime}", DateTime.Now.ToString("yyyy-MM-dd"))
                 //    , 1, out smsMsg);
-                msgParam = "{" + string.Format("\"CnName\":\"{0}\",\"BidBusiness\":\"{1}\",\"Number\":\"{2}\",\"SendTime\":\"{3}\"",
+                msgParam = string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\"",
                         bidModel.CnName, new DTcms.BLL.View_Bid().GetModelList("ID=" + bidModel.ID)[0].BidBusiness,
-                        bidModel.Number, DateTime.Now.ToString("yyyy-MM-dd")) + "}";
+                        bidModel.Number, DateTime.Now.ToString("yyyy-MM-dd"));
                 msgBLL.Send(JusticeConfigModel.Tel, manageSMS.content, 1, msgParam, out smsMsg);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "msgRet", "location.href=\"Bid_Step2_3.aspx?cid=58\";", true);
             }

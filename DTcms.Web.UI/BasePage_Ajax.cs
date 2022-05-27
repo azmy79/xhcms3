@@ -118,13 +118,12 @@ namespace DTcms.Web.UI
             //msgContent = msgContent.Replace("{code}", strcode);
             //msgContent = msgContent.Replace("{valid}", "2");
 
-            var msgParam = "{" + string.Format("\"code\":\"{0}\",\"valid\":\"{1}\"",strcode, 2) + "}";
+            var msgParam = string.Format("\"{0}\",\"{1}\"",strcode, 2);
 
             //发送短信
             var tipMsg = string.Empty;
             //var result = new BLL.sms_message().Send(phoneNum, msgContent, 1, out tipMsg);
-
-            var result = new BLL.ali_message().Send(phoneNum, msgContent, 1, msgParam, out tipMsg);
+            var result = new BLL.tx_message().Send(phoneNum, msgContent, 1, msgParam, out tipMsg);
 
             if (!result)
             {

@@ -229,31 +229,31 @@ namespace DTcms.Web.admin.settings {
         protected global::System.Web.UI.WebControls.TextBox webcountcode;
         
         /// <summary>
-        /// aliaccesskeyid 控件。
+        /// txsecretid 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox aliaccesskeyid;
+        protected global::System.Web.UI.WebControls.TextBox txsecretid;
         
         /// <summary>
-        /// aliaccesskeysecret 控件。
+        /// txsecretkey 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox aliaccesskeysecret;
+        protected global::System.Web.UI.WebControls.TextBox txsecretkey;
         
         /// <summary>
-        /// alisignname 控件。
+        /// txsignname 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox alisignname;
+        protected global::System.Web.UI.WebControls.TextBox txsignname;
         
         /// <summary>
         /// emailsmtp 控件。

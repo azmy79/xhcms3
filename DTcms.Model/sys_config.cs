@@ -44,7 +44,11 @@ namespace DTcms.Model
         private string _aliaccesskeyid = "";
         private string _aliaccesskeysecret = "";
         private string _alisignname = "";
- 
+
+        private string _txaccesskeyid = "";
+        private string _txaccesskeysecret = "";
+        private string _txsignname = "";
+
         private string _emailsmtp = "";
         private int _emailport = 25;
         private string _emailfrom = "";
@@ -308,6 +312,28 @@ namespace DTcms.Model
         {
             get { return _alisignname; }
             set { _alisignname = value; }
+        }
+
+        #endregion
+
+        #region 腾讯云短信平台设置==================================
+
+        public string txaccesskeyid
+        {
+            get { return _txaccesskeyid; }
+            set { _txaccesskeyid = value; }
+        }
+
+        public string txaccesskeysecret
+        {
+            get { return _txaccesskeysecret; }
+            set { _txaccesskeysecret = value; }
+        }
+
+        public string txsignname
+        {
+            get { return _txsignname; }
+            set { _txsignname = value; }
         }
 
         #endregion

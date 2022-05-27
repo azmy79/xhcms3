@@ -52,7 +52,7 @@
     <th width="8%">选择</th>
     <th align="left" width="15%">调用别名</th>
     <th align="left">模板标题</th>
-    <th align="left">阿里云模板代码</th>
+    <th align="left">腾讯云模板代码</th>
     <th width="8%">系统默认</th>
     <th width="10%">操作</th>
   </tr>
